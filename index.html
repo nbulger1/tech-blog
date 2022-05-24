@@ -27,18 +27,31 @@
       </nav>
 
       <main>
-        <!-- Render the sub layout -->
-        {{{ body }}}
+      <!-- Render the sub layout -->
+      <!-- {{{ body }}} -->
       </main>
+
+      <div class="card">
+        <div class="card-header">
+          Quote
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">what does this look like</footer>
+          </blockquote>
+        </div>
+      </div>
+
 
     <footer>
       
     </footer>
 
   <!-- Render script for logged in users only -->
-  {{#if logged_in}}
+  <!-- {{#if logged_in}}
   <script src="/js/logout.js"></script>
-  {{/if}}
+  {{/if}} -->
 </body>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
