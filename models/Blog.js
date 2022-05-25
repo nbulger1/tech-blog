@@ -20,9 +20,17 @@ Blog.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    keyPhrase: {
+    key_phrase: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "user",
+        key: "id",
+      },
     },
   },
   {
@@ -30,7 +38,7 @@ Blog.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "user",
+    modelName: "blog",
   }
 );
 

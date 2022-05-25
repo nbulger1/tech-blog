@@ -1,0 +1,20 @@
+{{#if id}}
+      <div class="card">
+        <div class="card-header">
+          {{blog.title}}
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>{{blog.text}}</p>
+            <footer class="blockquote-footer">{{blog.key_phrase}}</footer>
+          </blockquote>
+        </div>
+      <div>
+        <div class="form-group">
+          <label class="comment-label" for="exampleComment">Comment</label>
+          <input class="form-control comment-card" id="exampleComment" placeholder="Comment Text Here">
+        </div>
+        <button type="submit" class="btn btn-primary">Post</button>
+      </div>
+    </div>
+{{/if}}

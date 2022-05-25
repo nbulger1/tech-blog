@@ -1,3 +1,67 @@
-nav {
+form {
+    padding: 10px;
+    justify-content: center;
+    border: black solid 3px;
+    border-radius: 20px;
+    margin: 200px;
+    background-color: rgb(186, 239, 186);
+}
+
+body {
+    background-color: rgb(0, 44, 0);
+}
+
+.navbar {
+    padding: 20px;
+    border: solid lightgrey 2px;
+}
+
+.btn {
     background-color: green;
+    border-color:rgb(0, 44, 0);
+}
+
+.btn:hover {
+    background-color: grey;
+    border-color:rgb(0, 44, 0);
+    color: black;
+}
+
+.card {
+    padding: 10px;
+    justify-content: center;
+    border: black solid 3px;
+    border-radius: 20px;
+    background-color: rgb(186, 239, 186);
+    margin: 10px;
+}
+
+.card:hover {
+    box-shadow: 0px 0px 30px 0px lightgrey;
+    cursor: pointer;
+}
+
+.card-header {
+    background-color: rgb(0, 44, 0);
+    color: white;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.card-body {
+    border: rgb(0, 44, 0) solid 1px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.comment-card {
+    padding: 10px;
+    justify-content: center;
+    background-color: rgb(241, 238, 238);
+    border-radius: 5px;
+    height: 100px;
+}
+
+.comment-label {
+    font-weight: bold;
 }
