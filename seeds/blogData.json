@@ -1,17 +1,17 @@
 [
     {
-      "title": "",
-      "text": "",
-      "keyPhrase": ""
+      "title": "Top Things in CyberSecurity",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
+      "key_phrase": "Keep your data safe!"
     },
     {
-      "title": "",
-      "text": "",
-      "keyPhrase": ""
+      "title": "jQuery...a more efficient Javascript?",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
+      "key_phrase": "Is less typing better?"
     },
     {
-      "title": "",
-      "text": "",
-      "keyPhrase": ""
+      "title": "Style Your Own Page",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.",
+      "key_phrase": "What's so great about Bootstrap?"
     }
   ]
