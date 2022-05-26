@@ -20,8 +20,11 @@
           <div class="navbar-nav">
             <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
+            {{#if req.session.logged_in}}
+            <a class="nav-item nav-link disabled" id="logout" href="/api/users/logout"><button class="no-button" id="logout">Logout</button></a>
+            {{else}}
             <a class="nav-item nav-link" href="/api/users/login">Login</a>
-            <a class="nav-item nav-link disabled" href="/api/users/logout">Logout</a>
+            {{/if}}
           </div>
         </div>
       </nav>

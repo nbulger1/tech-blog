@@ -57,6 +57,11 @@ body {
     color: black;
 }
 
+.create-new-post {
+    display: flex;
+    justify-content: center;
+}
+
 .card {
     padding: 10px;
     justify-content: center;
@@ -94,4 +99,10 @@ body {
 
 .comment-label {
     font-weight: bold;
+}
+
+.logged-out {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

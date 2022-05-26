@@ -10,12 +10,15 @@ router.get("/", async (req, res) => {
         {
           model: User,
         },
+        // {
+        //   model: Comment,
+        // },
       ],
     });
 
     // Serialize data so the template can read it
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
-
+    console.log(blogs);
     // Pass serialized data and session flag into template
     res.render("homepage", {
       blogs,

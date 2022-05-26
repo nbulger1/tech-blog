@@ -1,5 +1,3 @@
-// const createPostEl = document.querySelector(".create-post");
-
 const newBlogPostHandler = async (event) => {
   event.preventDefault();
 
@@ -24,11 +22,32 @@ const newBlogPostHandler = async (event) => {
   }
 };
 
-// createPostEl.addEventListener("click", function (event) {
-//   alert("ive been clicked");
-//   newBlogPostHandler(event);
-// });
+const newCommentHandler = async (event) => {
+  event.preventDefault();
+
+  const commentText = document.querySelector("#exampleComment").value.trim();
+
+  if (commentText) {
+    const response = await fetch(`/api/blog/comment`, {
+      method: "POST",
+      body: JSON.stringify({ commentText }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      document.location.replace("/comment");
+    } else {
+      alert("Failed to create post");
+    }
+  }
+};
 
 document
-  .querySelector(".create-post")
+  .querySelector(".new-blog-post")
   .addEventListener("submit", newBlogPostHandler);
+
+document
+  .querySelector(".new-comment")
+  .addEventListener("submit", newCommentHandler);
