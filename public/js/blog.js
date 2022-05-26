@@ -1,58 +1,34 @@
-// const newBlogPostHandler = async (event) => {
-//   event.preventDefault();
+// const createPostEl = document.querySelector(".create-post");
 
-//   const title = document.querySelector("#exampleTitle").value.trim();
-//   const text = document.querySelector("#exampleBlogText").value.trim();
-//   const key_phrase = document.querySelector("#exampleKeyPhrase").value.trim();
+const newBlogPostHandler = async (event) => {
+  event.preventDefault();
 
-//   if (title && text && key_phrase) {
-//     const response = await fetch(`/api/blog/newpost`, {
-//       method: "POST",
-//       body: JSON.stringify({ title, text, key_phrase }),
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//     });
+  const title = document.querySelector("#exampleTitle").value.trim();
+  const text = document.querySelector("#exampleBlogText").value.trim();
+  const key_phrase = document.querySelector("#exampleKeyPhrase").value.trim();
 
-//     if (response.ok) {
-//       document.location.replace("/dashboard");
-//     } else {
-//       alert("Failed to create post");
-//     }
-//   }
-// };
+  if (title && text && key_phrase) {
+    const response = await fetch(`/api/blog/newpost`, {
+      method: "POST",
+      body: JSON.stringify({ title, text, key_phrase }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-// const cardEl = document.querySelectorAll(".card");
+    if (response.ok) {
+      document.location.replace("/dashboard");
+    } else {
+      alert("Failed to create post");
+    }
+  }
+};
 
-// const blogCommentEventHandler = async (event) => {
-//   event.preventDefault();
-//   if (cardEl) {
-//     const response = await fetch("/:id", {
-//       method: "GET",
-//       //   body: JSON.stringify({ email, password }),
-//       //   headers: { "Content-Type": "application/json" },
-//     });
+// createPostEl.addEventListener("click", function (event) {
+//   alert("ive been clicked");
+//   newBlogPostHandler(event);
+// });
 
-//     if (response.ok) {
-//       // If successful, redirect the browser to the profile page
-//       //   document.location.replace("/comment");
-//       console.log("alright");
-//     } else {
-//       alert(response.statusText);
-//     }
-//   }
-// };
-
-// for (var i = 0; i < cardEl.length; i++) {
-//   cardEl[i].addEventListener("click", function (event) {
-//     blogCommentEventHandler(event);
-//   });
-// }
-
-// document
-//   .querySelector(".create-post")
-//   .addEventListener("click", newBlogPostHandler);
-
-// document
-//   .querySelectorAll(".card")
-//   .addEventListener("click", blogCommentEventHandler);
+document
+  .querySelector(".create-post")
+  .addEventListener("submit", newBlogPostHandler);
