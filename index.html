@@ -30,22 +30,48 @@
       <!-- Render the sub layout -->
       <!-- {{{ body }}} -->
       </main>
+      <div class="row">
+        <div class="column">
+          <form class="login-form">
+            <p class="form-title">
+              Login!
+            </p>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+          </form>
+        </div>
+        
+        <div class="column">
+          <form class="signup-form">
+          <p class="form-title">
+            Sign Up!
+          </p>
+          <div class="form-group">
+            <label for="exampleInputName1">Name</label>
+            <input class="form-control" id="exampleInputName1" placeholder="Enter first and last name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
 
-      <form>
-        <div class="form-group">
-          <label for="exampleTitle">Title</label>
-          <input class="form-control" id="exampleTitle" placeholder="The Hidden Secrets of Tech">
         </div>
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">Blog Text</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>  
-        </div>
-        <div class="form-group">
-          <label for="exampleKeyPhrase">Key Phrase</label>
-          <input class="form-control" id="exampleKeyPhrase" placeholder="Don't use cookies!">
-        </div>
-        <button type="submit" class="btn btn-primary">Create Post</button>
-      </form>
+       
+      </div>
+      
     <footer>
       
     </footer>

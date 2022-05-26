@@ -26,37 +26,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/login", async (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  //   if (req.session.logged_in) {
-  //     res.redirect("/profile");
-  //     return;
-  //   }
-
-  res.render("login");
-});
-
-// router.get("/:id", async (req, res) => {
-//   try {
-//     const blogData = await Blog.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: User,
-//         },
-//       ],
-//     });
-
-//     const blog = blogData.get({ plain: true });
-
-//     res.render("comment", {
-//       ...blog,
-//       //   logged_in: req.session.logged_in,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
 router.get("/dashboard", async (req, res) => {
   try {
     // Get all projects and JOIN with user data
@@ -81,9 +50,22 @@ router.get("/dashboard", async (req, res) => {
   }
 });
 
-router.get("/newpost", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
-    res.render("newPost");
+    const blogData = await Blog.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+        },
+      ],
+    });
+
+    const blog = blogData.get({ plain: true });
+
+    res.render("comment", {
+      ...blog,
+      //   logged_in: req.session.logged_in,
+    });
   } catch (err) {
     res.status(500).json(err);
   }

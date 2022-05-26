@@ -1,5 +1,5 @@
-{{!-- {{#if user_id}} --}}
 {{#each blogs as |blog|}}
+{{!-- {{#if user_id = id}} --}}
 <div class="card">
     <div class="card-header">
         {{blog.title}}
@@ -11,7 +11,8 @@
         </blockquote>
     </div>
 </div>
-{{/each}}
-<a href="/newPost"><button type="submit" class="btn btn-primary">Create New Post</button></a>
-
 {{!-- {{/if}} --}}
+{{/each}}
+<a href="/api/blog/newpost"><button type="submit" class="btn btn-primary">Create New Post</button></a>
+
+<script src="./js/blog.js"></script>

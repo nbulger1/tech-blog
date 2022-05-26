@@ -1,4 +1,5 @@
 {{#each blogs as |blog|}}
+<a class="card-link" href="/{{blog.id}}">
 <div class="card">
     <div class="card-header">
         {{blog.title}}
@@ -10,4 +11,7 @@
         </blockquote>
     </div>
 </div>
+</a>
 {{/each}}
+
+<script src="./js/blog.js"></script>

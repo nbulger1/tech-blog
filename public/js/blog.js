@@ -1,34 +1,32 @@
-const newBlogPostHandler = async (event) => {
-  event.preventDefault();
+// const newBlogPostHandler = async (event) => {
+//   event.preventDefault();
 
-  const title = document.querySelector("#exampleTitle").value.trim();
-  const text = document.querySelector("#exampleBlogText").value.trim();
-  const key_phrase = document.querySelector("#exampleKeyPhrase").value.trim();
+//   const title = document.querySelector("#exampleTitle").value.trim();
+//   const text = document.querySelector("#exampleBlogText").value.trim();
+//   const key_phrase = document.querySelector("#exampleKeyPhrase").value.trim();
 
-  if (title && text && key_phrase) {
-    const response = await fetch(`/api/blog`, {
-      method: "POST",
-      body: JSON.stringify({ title, text, key_phrase }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+//   if (title && text && key_phrase) {
+//     const response = await fetch(`/api/blog/newpost`, {
+//       method: "POST",
+//       body: JSON.stringify({ title, text, key_phrase }),
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//     });
 
-    if (response.ok) {
-      document.location.replace("/dashboard");
-    } else {
-      alert("Failed to create post");
-    }
-  }
-};
+//     if (response.ok) {
+//       document.location.replace("/dashboard");
+//     } else {
+//       alert("Failed to create post");
+//     }
+//   }
+// };
+
+// const cardEl = document.querySelectorAll(".card");
 
 // const blogCommentEventHandler = async (event) => {
 //   event.preventDefault();
-
-//   const card = document.querySelector(".card");
-
-//   if (card) {
-//     // Send a POST request to the API endpoint
+//   if (cardEl) {
 //     const response = await fetch("/:id", {
 //       method: "GET",
 //       //   body: JSON.stringify({ email, password }),
@@ -45,8 +43,16 @@ const newBlogPostHandler = async (event) => {
 //   }
 // };
 
-document
-  .querySelector(".create-post")
-  .addEventListener("submit", newBlogPostHandler);
+// for (var i = 0; i < cardEl.length; i++) {
+//   cardEl[i].addEventListener("click", function (event) {
+//     blogCommentEventHandler(event);
+//   });
+// }
 
-// document.addEventListener("submit", blogCommentEventHandler);
+// document
+//   .querySelector(".create-post")
+//   .addEventListener("click", newBlogPostHandler);
+
+// document
+//   .querySelectorAll(".card")
+//   .addEventListener("click", blogCommentEventHandler);
