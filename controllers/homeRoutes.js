@@ -36,6 +36,27 @@ router.get("/login", async (req, res) => {
   res.render("login");
 });
 
+// router.get("/:id", async (req, res) => {
+//   try {
+//     const blogData = await Blog.findByPk(req.params.id, {
+//       include: [
+//         {
+//           model: User,
+//         },
+//       ],
+//     });
+
+//     const blog = blogData.get({ plain: true });
+
+//     res.render("comment", {
+//       ...blog,
+//       //   logged_in: req.session.logged_in,
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 router.get("/dashboard", async (req, res) => {
   try {
     // Get all projects and JOIN with user data
@@ -55,6 +76,14 @@ router.get("/dashboard", async (req, res) => {
       blogs,
       //   logged_in: req.session.logged_in,
     });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/newpost", async (req, res) => {
+  try {
+    res.render("newPost");
   } catch (err) {
     res.status(500).json(err);
   }

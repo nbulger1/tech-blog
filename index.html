@@ -31,26 +31,21 @@
       <!-- {{{ body }}} -->
       </main>
 
-
-      <div class="card">
-        <div class="card-header">
-          Quote
-        </div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <footer class="blockquote-footer">what does this look like</footer>
-          </blockquote>
-        </div>
-      <div>
+      <form>
         <div class="form-group">
-          <label class="comment-label" for="exampleComment">Comment</label>
-          <input class="form-control comment-card" id="exampleComment" placeholder="Comment Text Here">
+          <label for="exampleTitle">Title</label>
+          <input class="form-control" id="exampleTitle" placeholder="The Hidden Secrets of Tech">
         </div>
-        <button type="submit" class="btn btn-primary">Post</button>
-      </div>
-    </div>
-
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Blog Text</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>  
+        </div>
+        <div class="form-group">
+          <label for="exampleKeyPhrase">Key Phrase</label>
+          <input class="form-control" id="exampleKeyPhrase" placeholder="Don't use cookies!">
+        </div>
+        <button type="submit" class="btn btn-primary">Create Post</button>
+      </form>
     <footer>
       
     </footer>
