@@ -22,17 +22,20 @@ router.get("/", async (req, res) => {
 
     res.render("homepage", {
       blogs,
-      //   logged_in: req.session.logged_in,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get("/dashboard", async (req, res) => {
+router.get("/dashboard", withAuth, async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const blogData = await Blog.findAll({
+      where: {
+        user_id: req.session.user_id,
+      },
       include: [
         {
           model: User,
@@ -42,18 +45,20 @@ router.get("/dashboard", async (req, res) => {
 
     // Serialize data so the template can read it
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
+    console.log(blogs);
 
     // Pass serialized data and session flag into template
     res.render("dashboard", {
       blogs,
-      //   logged_in: req.session.logged_in,
+      logged_in: req.session.logged_in,
+      user_id: req.session.user_id,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", withAuth, async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
       include: [
@@ -76,7 +81,7 @@ router.get("/:id", async (req, res) => {
 
     res.render("comment", {
       ...blog,
-      //   logged_in: req.session.logged_in,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);

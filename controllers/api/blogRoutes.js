@@ -13,7 +13,7 @@ router.post("/newpost", async (req, res) => {
   try {
     const newPost = await Blog.create({
       ...req.body,
-      //   user_id: req.session.user_id,
+      user_id: req.session.user_id,
     });
 
     res.status(200).json(newPost);
@@ -26,7 +26,7 @@ router.post("/comment", async (req, res) => {
   try {
     const newComment = await Comment.create({
       ...req.body,
-      // user_id: req.session.user_id,
+      user_id: req.session.user_id,
     });
     res.status(200).json(newComment);
   } catch (err) {
