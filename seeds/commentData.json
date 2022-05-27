@@ -1,11 +1,11 @@
 [
     {
-      "comment": "This was a very helpful post!"
+      "comment_text": "This was a very helpful post!"
     },
     {
-      "comment": "I don't agree"
+      "comment_text": "I don't agree"
     },
     {
-      "comment": "Uh-huh...sure"
+      "comment_text": "Uh-huh...sure"
     }
-  ]
+]

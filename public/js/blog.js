@@ -25,19 +25,19 @@ const newBlogPostHandler = async (event) => {
 const newCommentHandler = async (event) => {
   event.preventDefault();
 
-  const commentText = document.querySelector("#exampleComment").value.trim();
+  const comment_text = document.querySelector("#exampleComment").value.trim();
 
-  if (commentText) {
+  if (comment_text) {
     const response = await fetch(`/api/blog/comment`, {
       method: "POST",
-      body: JSON.stringify({ commentText }),
+      body: JSON.stringify({ comment_text }),
       headers: {
         "Content-Type": "application/json",
       },
     });
 
     if (response.ok) {
-      document.location.replace("/comment");
+      document.location.replace("/:id");
     } else {
       alert("Failed to create post");
     }

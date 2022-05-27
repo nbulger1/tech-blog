@@ -58,10 +58,10 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
-  if (req.session.logged_in) {
+  try {
     res.render("logout");
-  } else {
-    res.status(404).end();
+  } catch (err) {
+    res.status(404).json(err);
   }
 });
 
