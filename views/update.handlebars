@@ -1,0 +1,29 @@
+<div class="new-comment">
+      <div class="card">
+        <div class="card-header">
+          {{title}}
+        </div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>{{text}}</p>
+            <footer class="blockquote-footer">{{key_phrase}}</footer>
+          </blockquote>
+        </div>
+      <form class="update-blog-post">
+        <div class="form-group">
+          <label for="exampleTitle">Title</label>
+          <input class="form-control" id="exampleTitle" placeholder="The Hidden Secrets of Tech">
+        </div>
+        <div class="form-group">
+          <label for="exampleBlogText">Blog Text</label>
+          <textarea class="form-control" id="exampleBlogText" rows="3"></textarea>  
+        </div>
+        <div class="form-group">
+          <label for="exampleKeyPhrase">Key Phrase</label>
+          <input class="form-control" id="exampleKeyPhrase" placeholder="Don't use cookies!">
+        </div>
+        <button type="submit" class="btn btn-primary update-post">Update Post</button>
+      </form>
+
+</div>
+<script src="/js/blog.js"></script>

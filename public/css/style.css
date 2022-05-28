@@ -1,10 +1,16 @@
-form {
+.new-blog-post {
     padding: 10px;
     justify-content: center;
     align-items: center;
     border: black solid 3px;
     border-radius: 20px;
     margin: 100px 50px;
+    background-color: rgb(186, 239, 186);
+}
+
+.update-blog-post {
+    justify-content: center;
+    align-items: center;
     background-color: rgb(186, 239, 186);
 }
 
@@ -87,6 +93,11 @@ body {
     border: rgb(0, 44, 0) solid 1px;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
+}
+
+.user-date {
+    font-size: 12px;
+    font-style: italic;
 }
 
 .comment-card {

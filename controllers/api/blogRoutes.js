@@ -22,13 +22,14 @@ router.post("/newpost", async (req, res) => {
   }
 });
 
-router.post("/comment", async (req, res) => {
+router.put("/updatepost", async (req, res) => {
   try {
-    const newComment = await Comment.create({
+    const updatePost = await Blog.update({
       ...req.body,
       user_id: req.session.user_id,
     });
-    res.status(200).json(newComment);
+
+    res.status(200).json(updatePost);
   } catch (err) {
     res.status(400).json(err);
   }
