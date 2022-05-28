@@ -1,4 +1,8 @@
-.new-blog-post {
+.new-post-form-container, .login-form-container, .signup-form-container {
+    display: flex;
+}
+
+.new-blog-post, .signup-form, .login-form {
     padding: 10px;
     justify-content: center;
     align-items: center;
