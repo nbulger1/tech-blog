@@ -16,11 +16,24 @@ Comment.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    date_created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
     blog_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: "blog",
+        key: "id",
+      },
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "user",
         key: "id",
       },
     },

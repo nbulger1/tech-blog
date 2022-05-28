@@ -7,24 +7,25 @@
           <blockquote class="blockquote mb-0">
             <p>{{text}}</p>
             <footer class="blockquote-footer">{{key_phrase}}</footer>
+            <p class="user-date">Created by {{user.name}} on {{format_date date_created}}
           </blockquote>
         </div>
         <div class="comment">
           {{#if comments}}
             <h5>Comments</h5>
             {{#each comments}}
-              <p>{{this}}</p>
+              <p>{{this.comment_text}} - {{this.user.name}} on {{format_date this.date_created}}</p>
             {{/each}}
           {{else}}
           <p>No Comments on this Post</p>
           {{/if}}
         </div>
-        <div class="form-group">
+        <form class="form-group post-comment">
           <label class="comment-label" for="exampleComment">Comment</label>
           <input class="form-control comment-card" id="exampleComment" placeholder="Comment Text Here">
         </div>
-        <button type="submit" class="btn btn-primary post-comment">Post</button>
-      </div>
+        <button type="submit" class="btn btn-primary">Post</button>
+      </form>
 
 </div>
-<script src="/js/blog.js"></script>
+<script src="/js/comment.js"></script>
