@@ -1,5 +1,4 @@
 {{#each blogs as |blog|}}
-<a class="card-link" href="/update/{{blog.id}}">
 <div class="card">
     <div class="card-header">
         {{blog.title}}
@@ -10,11 +9,14 @@
             <footer class="blockquote-footer">{{blog.key_phrase}}</footer>
             <p class="user-date">Created by {{blog.user.name}} on {{format_date blog.date_created}}
         </blockquote>
+        <a href="/update/{{blog.id}}"><button type="submit" class="btn btn-primary">Update Post</button></a>
+        <button type="submit" class="btn btn-primary delete-post" data-id="{{blog.id}}">Delete Post</button>
     </div>
 </div>
-</a>
 {{/each}}
 
 <div class="create-new-post">
     <a href="/api/blog/newpost"><button type="submit" class="btn btn-primary">Create New Post</button></a>
 </div>
+
+<script src="/js/delete.js"></script>

@@ -97,15 +97,11 @@ router.get("/update/:id", withAuth, async (req, res) => {
           model: User,
         },
       ],
-      raw: true,
       nest: true,
     });
 
-    const update = updateData;
+    const update = updateData.get({ plain: true });
     console.log(update);
-
-    // const blog = blogData.get({ plain: true });
-
     res.render("update", {
       ...update,
       logged_in: req.session.logged_in,
