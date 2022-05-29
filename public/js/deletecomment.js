@@ -1,30 +1,26 @@
-// function to handle deleting a post
+//function to delete a comment
 const deleteCommentHandler = async (event) => {
-  //   if the id matches the data attribute then...
-  const blog_id = window.location.toString().split("/")[
-    window.location.toString().split("/").length - 1
-  ];
+  event.preventDefault();
 
-  if (event.target.hasAttribute("data-id")) {
-    //create an id variable
-    const id = event.target.getAttribute("data-id");
-    console.log(id);
+  //take the input text value from the exampleComment id
+  const id = event.target.getAttribute("data-id");
 
-    //fetch the api/blog/id to run a delete method
-    const response = await fetch(`/api/blog/comment/${blog_id}/${id}`, {
-      method: "DELETE",
-    });
+  //if the comment_text is present then call the post method in the api/blog folder under comment
+  //create an id variable
 
-    //if the response if okay then return to the dashboard
-    if (response.ok) {
-      document.location.replace(`/${blog_id}`);
-    } else {
-      alert("Failed to delete comment");
-    }
+  const response = await fetch(`/api/blog/comment/${id}`, {
+    method: "DELETE",
+  });
+
+  //if the response is okay then reload the page with the blog id
+  if (response.ok) {
+    document.location.replace(`/`);
+  } else {
+    alert(response.statusText);
   }
 };
 
-// add an event listener to the delete post button
+//add an event listener to the post comment button
 document
-  .querySelector(".delete-comment")
+  .querySelector(".delete-comment-button-confirm")
   .addEventListener("click", deleteCommentHandler);

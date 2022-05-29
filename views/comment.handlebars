@@ -14,9 +14,7 @@
           {{#if comments}}
             <h5>Comments</h5>
             {{#each comments}}
-            <div class="delete-comment" data_id="{{this.id}}">
-              <p>{{this.comment_text}} - {{this.user.name}} on {{format_date this.date_created}} <button class="btn btn-primary delete-comment-button">Delete</button></p>
-            </div>
+              <p>{{this.comment_text}} - {{this.user.name}} on {{format_date this.date_created}} <a href="/api/blog/deleteComment/{{this.id}}"><button type="submit" class="btn btn-primary delete-comment-button">Delete</button></a></p>
             {{/each}}
           {{else}}
           <p>No Comments on this Post</p>
@@ -33,4 +31,3 @@
 
 </div>
 <script src="/js/comment.js"></script>
-<script src="/js/deletecomment.js"></script>

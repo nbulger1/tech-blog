@@ -60,7 +60,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
 });
 
 //when at a given id - find the blog by primary key that matches the blog_id, including all comments associated with the post and the user name
-router.get("/:id", withAuth, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
       include: [
@@ -87,6 +87,7 @@ router.get("/:id", withAuth, async (req, res) => {
     });
     // serialize
     const blog = blogData.get({ plain: true });
+    console.log(blog);
 
     //render the comment handlebars file
     res.render("comment", {

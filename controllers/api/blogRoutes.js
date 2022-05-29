@@ -1,10 +1,10 @@
 //require the express router, two models: blog and comment, and the withAuth util
 const router = require("express").Router();
-const { Blog, Comment } = require("../../models");
+const { Blog, Comment, User } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 //when at /api/blog/newpost render the newpost handlebars file
-router.get("/newpost", async (req, res) => {
+router.get("/newpost", withAuth, async (req, res) => {
   try {
     res.render("newPost");
   } catch (err) {
@@ -13,7 +13,7 @@ router.get("/newpost", async (req, res) => {
 });
 
 // when at api/blog/newpost if fetch call is made then create a blog using the request body supplied in the fetch call and set the user id to the id of the logged in individual
-router.post("/newpost", async (req, res) => {
+router.post("/newpost", withAuth, async (req, res) => {
   try {
     const newPost = await Blog.create({
       ...req.body,
@@ -27,7 +27,7 @@ router.post("/newpost", async (req, res) => {
 });
 
 // at api/blog/id (ie 1) when update the blog post that matches the id using the request body provided
-router.put("/:id", async (req, res) => {
+router.put("/:id", withAuth, async (req, res) => {
   try {
     console.log(req.body);
     const blogData = await Blog.update(req.body, {
@@ -68,49 +68,58 @@ router.delete("/:id", withAuth, async (req, res) => {
 });
 
 // at api/blog/comment when a request is made then create a comment using the request body and set the user_id to the id of the individual that is logged in
-router.post("/comment", async (req, res) => {
+router.post("/comment", withAuth, async (req, res) => {
   try {
     const newComment = await Comment.create({
       ...req.body,
       user_id: req.session.user_id,
     });
+
     res.status(200).json(newComment);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
+router.get("/deleteComment/:id", withAuth, async (req, res) => {
+  try {
+    const commentData = await Comment.findByPk(req.params.id, {
+      include: {
+        model: User,
+        attributes: ["name"],
+      },
+    });
+
+    const comment = commentData.get({ plain: true });
+    console.log(comment);
+    res.render("deleteComment", {
+      ...comment,
+    });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 // at api/blog/comment/:id when delete request is made, destroy the comment that matches the given id - not functioning right now
-// router.delete("/comment/:blogid/:commentid", async (req, res) => {
-//   try {
-//     const blogData = await Blog.findByPk(
-//       req.params.blogid,
-//       {
-//         Include: {
-//           model: Comment,
-//           where: {
-//             id: req.params.commentid,
-//           },
-//         },
-//       },
-//       {
-//         new: true,
-//       }
-//     );
+router.delete("/comment/:id", withAuth, async (req, res) => {
+  try {
+    const commentData = await Comment.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
 
-//     console.log(blogData);
-//     if (!blogData) {
-//       res.status(404).json({ message: "No comment found with this id!" });
-//       return;
-//     }
+    console.log(commentData);
+    if (!commentData) {
+      res.status(404).json({ message: "No comment found with this id!" });
+      return;
+    }
 
-//     await Comment.destroy(req.params.commentid);
-
-//     res.status(200).json(blogData);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    res.status(200).json(commentData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 //export all the routes
 module.exports = router;

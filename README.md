@@ -13,6 +13,7 @@ My task was to build, from scratch, a CMS-style blog similar to a Wordpress site
 - [Database and Models](#database-and-models)
 - [Views](#views)
 - [Controllers](#controllers)
+- [Access](#access)
 - [Front End](#front-end)
 - [Screen Recording](#screen-recording)
 - [License](#license)
@@ -113,6 +114,29 @@ API - Blog Routes
 - DELETE - "api/blog/:id" - Delete the Individual Blog by ID
 - POST - "api/blog/comment" - Add the Comment to the Post
 - DELETE - "api/blog/comment/:id" - Delete the Individual Comment by ID
+
+## Access
+
+The user is limited to certain portions of the webpage without logging in/signing up. Below are the differences in access:
+
+Without Authentication
+
+- View Homepage
+- View Individual Post with Comments
+- View Login/Signup Page
+
+With Authentication
+
+- View Homepage
+- View Individual Post with Comments
+- View Login/Signup Page
+- Add Comments
+- Delete Comments
+- View Dashboard
+- Create New Posts
+- Update Posts
+- Delete Posts
+- Logout
 
 ## Front End
 
