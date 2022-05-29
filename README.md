@@ -69,7 +69,7 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 
 To start the application, I created a mysql database called "user_db" via schema.sql. I determined the need for 3 models - User, Comment, and Blog. See the following schema for the models and connecting foreign keys:
 
-![Diagram of the schema determining the models and foreign keys](./public/assets/images/schema_tech_blog.gif)
+![Diagram of the schema determining the models and foreign keys](./public/assets/images/schema_tech_blog.png)
 
 Once the models were initialized, I created seed JSON files for each of the models to add some preliminary data to assist with development.
 
