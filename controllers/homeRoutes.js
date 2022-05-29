@@ -1,7 +1,9 @@
+//require the express router, the three models, and the withAuth util
 const router = require("express").Router();
 const { Blog, User, Comment } = require("../models");
 const withAuth = require("../utils/auth");
 
+//When on the home route get all the blogs with the user that created the post
 router.get("/", async (req, res) => {
   try {
     // Get all projects and JOIN with user data
@@ -14,17 +16,21 @@ router.get("/", async (req, res) => {
       ],
     });
 
+    //Make all the blogs into a plain json array
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
+    //render the homepage handlebars file and set the logged_in variable
     res.render("homepage", {
       blogs,
       logged_in: req.session.logged_in,
     });
+    //if there is an error, catch it
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
+//when at /dashboard route, only if logged in, gather the blogs that match the user_id, including the user name
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
     // Get all projects and JOIN with user data
@@ -39,10 +45,10 @@ router.get("/dashboard", withAuth, async (req, res) => {
       ],
     });
 
-    // Serialize data so the template can read it
+    // Serialize data into a plain javascript object
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
-    // Pass serialized data and session flag into template
+    // Render the dashboard handlebars file using the blogs array
     res.render("dashboard", {
       blogs,
       logged_in: req.session.logged_in,
@@ -53,6 +59,7 @@ router.get("/dashboard", withAuth, async (req, res) => {
   }
 });
 
+//when at a given id - find the blog by primary key that matches the blog_id, including all comments associated with the post and the user name
 router.get("/:id", withAuth, async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
@@ -78,8 +85,10 @@ router.get("/:id", withAuth, async (req, res) => {
       ],
       nest: true,
     });
+    // serialize
     const blog = blogData.get({ plain: true });
 
+    //render the comment handlebars file
     res.render("comment", {
       ...blog,
       logged_in: req.session.logged_in,
@@ -89,6 +98,7 @@ router.get("/:id", withAuth, async (req, res) => {
   }
 });
 
+//when at update/id (i.e. 1), only with authentication find the blog based on the id, including the user
 router.get("/update/:id", withAuth, async (req, res) => {
   try {
     const updateData = await Blog.findByPk(req.params.id, {
@@ -101,7 +111,8 @@ router.get("/update/:id", withAuth, async (req, res) => {
     });
 
     const update = updateData.get({ plain: true });
-    console.log(update);
+
+    //render the update handlebars file
     res.render("update", {
       ...update,
       logged_in: req.session.logged_in,
@@ -111,4 +122,5 @@ router.get("/update/:id", withAuth, async (req, res) => {
   }
 });
 
+//export all the routes
 module.exports = router;

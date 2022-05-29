@@ -1,13 +1,15 @@
+//function to create a new comment
 const newCommentHandler = async (event) => {
   event.preventDefault();
 
+  //take the input text value from the exampleComment id
   const comment_text = document.querySelector("#exampleComment").value.trim();
-  console.log(comment_text);
 
   const blog_id = window.location.toString().split("/")[
     window.location.toString().split("/").length - 1
   ];
 
+  //if the comment_text is present then call the post method in the api/blog folder under comment
   if (comment_text) {
     const response = await fetch(`/api/blog/comment`, {
       method: "POST",
@@ -17,6 +19,7 @@ const newCommentHandler = async (event) => {
       },
     });
 
+    //if the response is okay then reload the page with the blog id
     if (response.ok) {
       document.location.replace(`/${blog_id}`);
     } else {
@@ -25,6 +28,7 @@ const newCommentHandler = async (event) => {
   }
 };
 
+//add an event listener to the post comment button
 document
   .querySelector(".post-comment")
   .addEventListener("submit", newCommentHandler);

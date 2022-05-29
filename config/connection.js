@@ -1,8 +1,10 @@
+//require sequelize and dotenv
 const Sequelize = require("sequelize");
 require("dotenv").config();
 
 let sequelize;
 
+// when on heroku use the jawsdb otherwise use local host with the .env variables
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
@@ -18,4 +20,5 @@ if (process.env.JAWSDB_URL) {
   );
 }
 
+//export sequelize
 module.exports = sequelize;

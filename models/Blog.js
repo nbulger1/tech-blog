@@ -1,9 +1,10 @@
+// require sequelize and the connection file in the config folder
 const { Model, DataTypes } = require("sequelize");
-const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 
 class Blog extends Model {}
 
+// initialize the blog model with one foreign key that references the user id
 Blog.init(
   {
     id: {
@@ -47,4 +48,5 @@ Blog.init(
   }
 );
 
+//export the blog model
 module.exports = Blog;

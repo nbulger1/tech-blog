@@ -1,13 +1,16 @@
+// require sequelize and the connection file in the config folder
 const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 const sequelize = require("../config/connection");
 
+// add a method to check the password when user attempts to the login
 class User extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
 
+//initialize the user
 User.init(
   {
     id: {
@@ -36,6 +39,7 @@ User.init(
       },
     },
   },
+  // add hooks to hash the password 10 times through using the bcrypt package
   {
     hooks: {
       beforeCreate: async (newUserData) => {
@@ -58,4 +62,5 @@ User.init(
   }
 );
 
+//export the user
 module.exports = User;
