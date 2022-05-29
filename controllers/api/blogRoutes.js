@@ -25,17 +25,16 @@ router.post("/newpost", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const updatePost = await Blog.update(
-      {
-        ...req.body,
+    const blogData = await Blog.update(req.body, {
+      where: {
+        id: req.params.id,
       },
-      {
-        where: {
-          id: req.params.id,
-        },
-      },
-      res.status(200).json(updatePost)
-    );
+    });
+    if (!blogData[0]) {
+      res.status(404).json({ message: "No category with this id!" });
+      return;
+    }
+    res.status(200).json(blogData);
   } catch (err) {
     res.status(400).json(err);
   }
