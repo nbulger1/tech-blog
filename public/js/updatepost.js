@@ -27,4 +27,4 @@ const updateBlogPostHandler = async (event) => {
 
 document
   .querySelector(".update-post")
-  .addEventListener("submit", updateBlogPostHandler);
+  .addEventListener("click", updateBlogPostHandler);
