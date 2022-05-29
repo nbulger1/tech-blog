@@ -17,10 +17,12 @@ const PORT = process.env.PORT || 3003;
 // create handlebars engine with the helpers
 const hbs = exphbs.create({ helpers });
 
-//create the express session
+//create the express session with a max age of 10 minutes
 const sess = {
   secret: "Super secret secret",
-  cookie: {},
+  cookie: {
+    maxAge: 600000,
+  },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
