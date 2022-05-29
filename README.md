@@ -69,13 +69,13 @@ THEN I am able to view comments but I am prompted to log in again before I can a
 
 To start the application, I created a mysql database called "user_db" via schema.sql. I determined the need for 3 models - User, Comment, and Blog. See the following schema for the models and connecting foreign keys:
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Diagram of the schema determining the models and foreign keys](./public/assets/images/schema_tech_blog.gif)
 
 Once the models were initialized, I created seed JSON files for each of the models to add some preliminary data to assist with development.
 
 ## Views
 
-After determining the models required and seeding the user_db database, I drew out all of the different required front-end views. I decided to create Handlebars.js files for 7 different views:
+After determining the models required and seeding the user_db database, I drew out all of the different required front-end views. I decided to create Handlebars.js files for 8 different views:
 
 - Homepage
 - Dashboard
@@ -83,7 +83,8 @@ After determining the models required and seeding the user_db database, I drew o
 - Logging Out
 - Creating New Posts
 - Updating Posts
-- Adding, Viewing, or Deleting Comments
+- Adding & Viewing Comments
+- Deleting Comments
 
 I worked with an index.html file to create each of the different views with the necessary CSS styling, through the style.css file in the public folder, before placing the html in each of their handlebars files. I added in placeholders for the data that would be gathered through get requests.
 
@@ -113,6 +114,7 @@ API - Blog Routes
 - PUT - "api/blog/:id" - Update the Individual Blog by ID
 - DELETE - "api/blog/:id" - Delete the Individual Blog by ID
 - POST - "api/blog/comment" - Add the Comment to the Post
+- GET - "api/blog/deleteComment/:id" - View the Individual Comment by ID
 - DELETE - "api/blog/comment/:id" - Delete the Individual Comment by ID
 
 ## Access
@@ -143,6 +145,8 @@ With Authentication
 All of the front end styling and javscript lives in the public folder. The javacscript folder holds functions to handle fetch requests for each of the POST, PUT, and DELETE routes. The functions are tied to the handlebars views files through event listeners on buttons or blog posts.
 
 ## Screen Recording
+
+![GIF demonstrating testing the tech blog for a variety of conditions as well as assessing all button functionality](./public/assets/images/tech_blog_gif.gif)
 
 ## License
 
