@@ -57,7 +57,7 @@ router.delete("/:id", withAuth, async (req, res) => {
     });
 
     if (!blogData) {
-      res.status(404).json({ message: "No project found with this id!" });
+      res.status(404).json({ message: "No blog found with this id!" });
       return;
     }
 
@@ -79,6 +79,38 @@ router.post("/comment", async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+// at api/blog/comment/:id when delete request is made, destroy the comment that matches the given id - not functioning right now
+// router.delete("/comment/:blogid/:commentid", async (req, res) => {
+//   try {
+//     const blogData = await Blog.findByPk(
+//       req.params.blogid,
+//       {
+//         Include: {
+//           model: Comment,
+//           where: {
+//             id: req.params.commentid,
+//           },
+//         },
+//       },
+//       {
+//         new: true,
+//       }
+//     );
+
+//     console.log(blogData);
+//     if (!blogData) {
+//       res.status(404).json({ message: "No comment found with this id!" });
+//       return;
+//     }
+
+//     await Comment.destroy(req.params.commentid);
+
+//     res.status(200).json(blogData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
 //export all the routes
 module.exports = router;
