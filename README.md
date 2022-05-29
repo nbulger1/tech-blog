@@ -2,14 +2,21 @@
 
 ## Description
 
+When one thinks of a web developer, they often think of creating new applications and many thankless hours debugging codebases, but developers also spend a lot of time reading and writing about various technologies. Google can be an extremely powerful resource for tidbits of knowledge as well as tutorials to help developers of all skill-levels.
+
+My task was to build, from scratch, a CMS-style blog similar to a Wordpress site. The application was intended to allow developers to publish blog posts as well as comment on other posts. The site was to follow the MVC paradigm, use Handlebars.js, use sequelize as the ORM, use express-session for authentication, and be deployed on Heroku.
+
 ## Table of Contents
 
 - [User Story](#user-story)
 - [Acceptance Criteria](#acceptance-criteria)
-- []()
-- []()
-- []()
-- []()
+- [Database and Models](#database-and-models)
+- [Views](#views)
+- [Controllers](#controllers)
+- [Front End](#front-end)
+- [Screen Recording](#screen-recording)
+- [License](#license)
+- [Link](#link)
 
 ## User Story
 
@@ -56,3 +63,69 @@ THEN I am signed out of the site
 WHEN I am idle on the site for more than a set time
 THEN I am able to view comments but I am prompted to log in again before I can add, update, or delete comments
 ```
+
+## Database and Models
+
+To start the application, I created a mysql database called "user_db" via schema.sql. I determined the need for 3 models - User, Comment, and Blog. See the following schema for the models and connecting foreign keys:
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+Once the models were initialized, I created seed JSON files for each of the models to add some preliminary data to assist with development.
+
+## Views
+
+After determining the models required and seeding the user_db database, I drew out all of the different required front-end views. I decided to create Handlebars.js files for 7 different views:
+
+- Homepage
+- Dashboard
+- Logging In or Signing Up
+- Logging Out
+- Creating New Posts
+- Updating Posts
+- Adding, Viewing, or Deleting Comments
+
+I worked with an index.html file to create each of the different views with the necessary CSS styling, through the style.css file in the public folder, before placing the html in each of their handlebars files. I added in placeholders for the data that would be gathered through get requests.
+
+## Controllers
+
+To create the backend routes, I created a controller folder with a homeRoutes.js file and then an api folder that houses the userRoutes and blogRoutes. I determined the need for several different routes to handle GET, POST, PUT, and DELETE requests through the front-end javascript fetch calls. Below outlines the location of each route:
+
+Home Routes
+
+- GET - "/" - Homepage
+- GET - "/dashboard" - Dashboard
+- GET "/:id" - Individual Blog by ID
+- GET "update/:id" - Update Form by Individual Blog by ID
+
+API - User Routes
+
+- GET - "api/users/login" - Login/Signup Page
+- POST - "api/users/" - Create a User on Signup Page
+- POST - "api/users/login" - Login an Individual
+- GET - "api/users/logout" - Logout Page
+- POST - "api/users/logout" - Destory the Session
+
+API - Blog Routes
+
+- GET - "api/blog/newpost" - Create New Post Form
+- POST - "api/blog/newpost" - Create the New Post with Form Info
+- PUT - "api/blog/:id" - Update the Individual Blog by ID
+- DELETE - "api/blog/:id" - Delete the Individual Blog by ID
+- POST - "api/blog/comment" - Add the Comment to the Post
+- DELETE - "api/blog/comment/:id" - Delete the Individual Comment by ID
+
+## Front End
+
+All of the front end styling and javscript lives in the public folder. The javacscript folder holds functions to handle fetch requests for each of the POST, PUT, and DELETE routes. The functions are tied to the handlebars views files through event listeners on buttons or blog posts.
+
+## Screen Recording
+
+## License
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+This project is protected under the MIT License.
+
+## Link
+
+See the following for a link to deployed Heroku application: https://tech-blog-bulger.herokuapp.com/
